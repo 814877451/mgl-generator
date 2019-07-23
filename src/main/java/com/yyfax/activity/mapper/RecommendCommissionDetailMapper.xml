@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yyfax.activity.dao.RecommendCommissionDetailDao">
+  <resultMap id="BaseResultMap" type="com.yyfax.activity.domain.RecommendCommissionDetailDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="info_id" jdbcType="BIGINT" property="infoId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="invite_id" jdbcType="VARCHAR" property="inviteId" />
+    <result column="rule_id" jdbcType="VARCHAR" property="ruleId" />
+    <result column="amount" jdbcType="BIGINT" property="amount" />
+    <result column="pay_wey" jdbcType="TINYINT" property="payWey" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="deal_time" jdbcType="TIMESTAMP" property="dealTime" />
+    <result column="fail_reason" jdbcType="VARCHAR" property="failReason" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, info_id, user_id, invite_id, rule_id, amount, pay_wey, state, deal_time, fail_reason, 
+    remark, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_recommend_commission_detail
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_recommend_commission_detail
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yyfax.activity.domain.RecommendCommissionDetailDO">
+    insert into tb_recommend_commission_detail (id, info_id, user_id, 
+      invite_id, rule_id, amount, 
+      pay_wey, state, deal_time, 
+      fail_reason, remark, create_time, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{infoId,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, 
+      #{inviteId,jdbcType=VARCHAR}, #{ruleId,jdbcType=VARCHAR}, #{amount,jdbcType=BIGINT}, 
+      #{payWey,jdbcType=TINYINT}, #{state,jdbcType=TINYINT}, #{dealTime,jdbcType=TIMESTAMP}, 
+      #{failReason,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyfax.activity.domain.RecommendCommissionDetailDO">
+    insert into tb_recommend_commission_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="infoId != null">
+        info_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="inviteId != null">
+        invite_id,
+      </if>
+      <if test="ruleId != null">
+        rule_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="payWey != null">
+        pay_wey,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="dealTime != null">
+        deal_time,
+      </if>
+      <if test="failReason != null">
+        fail_reason,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="infoId != null">
+        #{infoId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteId != null">
+        #{inviteId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="payWey != null">
+        #{payWey,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="dealTime != null">
+        #{dealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="failReason != null">
+        #{failReason,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyfax.activity.domain.RecommendCommissionDetailDO">
+    update tb_recommend_commission_detail
+    <set>
+      <if test="infoId != null">
+        info_id = #{infoId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteId != null">
+        invite_id = #{inviteId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleId != null">
+        rule_id = #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="payWey != null">
+        pay_wey = #{payWey,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="dealTime != null">
+        deal_time = #{dealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="failReason != null">
+        fail_reason = #{failReason,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyfax.activity.domain.RecommendCommissionDetailDO">
+    update tb_recommend_commission_detail
+    set info_id = #{infoId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=VARCHAR},
+      invite_id = #{inviteId,jdbcType=VARCHAR},
+      rule_id = #{ruleId,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=BIGINT},
+      pay_wey = #{payWey,jdbcType=TINYINT},
+      state = #{state,jdbcType=TINYINT},
+      deal_time = #{dealTime,jdbcType=TIMESTAMP},
+      fail_reason = #{failReason,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yyfax.activity.domain.RecommendCommissionDetailDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="info_id" jdbcType="BIGINT" property="infoId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="invite_id" jdbcType="VARCHAR" property="inviteId" />
+    <result column="rule_id" jdbcType="VARCHAR" property="ruleId" />
+    <result column="amount" jdbcType="BIGINT" property="amount" />
+    <result column="pay_wey" jdbcType="TINYINT" property="payWey" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="deal_time" jdbcType="TIMESTAMP" property="dealTime" />
+    <result column="fail_reason" jdbcType="VARCHAR" property="failReason" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, info_id, user_id, invite_id, rule_id, amount, pay_wey, state, deal_time, fail_reason, 
+    remark, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_recommend_commission_detail
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_recommend_commission_detail
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yyfax.activity.domain.RecommendCommissionDetailDO">
+    insert into tb_recommend_commission_detail (id, info_id, user_id, 
+      invite_id, rule_id, amount, 
+      pay_wey, state, deal_time, 
+      fail_reason, remark, create_time, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{infoId,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR}, 
+      #{inviteId,jdbcType=VARCHAR}, #{ruleId,jdbcType=VARCHAR}, #{amount,jdbcType=BIGINT}, 
+      #{payWey,jdbcType=TINYINT}, #{state,jdbcType=TINYINT}, #{dealTime,jdbcType=TIMESTAMP}, 
+      #{failReason,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyfax.activity.domain.RecommendCommissionDetailDO">
+    insert into tb_recommend_commission_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="infoId != null">
+        info_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="inviteId != null">
+        invite_id,
+      </if>
+      <if test="ruleId != null">
+        rule_id,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="payWey != null">
+        pay_wey,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="dealTime != null">
+        deal_time,
+      </if>
+      <if test="failReason != null">
+        fail_reason,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="infoId != null">
+        #{infoId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteId != null">
+        #{inviteId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleId != null">
+        #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="payWey != null">
+        #{payWey,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="dealTime != null">
+        #{dealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="failReason != null">
+        #{failReason,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyfax.activity.domain.RecommendCommissionDetailDO">
+    update tb_recommend_commission_detail
+    <set>
+      <if test="infoId != null">
+        info_id = #{infoId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteId != null">
+        invite_id = #{inviteId,jdbcType=VARCHAR},
+      </if>
+      <if test="ruleId != null">
+        rule_id = #{ruleId,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=BIGINT},
+      </if>
+      <if test="payWey != null">
+        pay_wey = #{payWey,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="dealTime != null">
+        deal_time = #{dealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="failReason != null">
+        fail_reason = #{failReason,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyfax.activity.domain.RecommendCommissionDetailDO">
+    update tb_recommend_commission_detail
+    set info_id = #{infoId,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=VARCHAR},
+      invite_id = #{inviteId,jdbcType=VARCHAR},
+      rule_id = #{ruleId,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=BIGINT},
+      pay_wey = #{payWey,jdbcType=TINYINT},
+      state = #{state,jdbcType=TINYINT},
+      deal_time = #{dealTime,jdbcType=TIMESTAMP},
+      fail_reason = #{failReason,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

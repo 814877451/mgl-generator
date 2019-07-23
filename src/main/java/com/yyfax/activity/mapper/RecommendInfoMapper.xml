@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yyfax.activity.dao.RecommendInfoDao">
+  <resultMap id="BaseResultMap" type="com.yyfax.activity.domain.RecommendInfoDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="info_name" jdbcType="VARCHAR" property="infoName" />
+    <result column="info_desc" jdbcType="VARCHAR" property="infoDesc" />
+    <result column="dept_id" jdbcType="VARCHAR" property="deptId" />
+    <result column="leader_id" jdbcType="VARCHAR" property="leaderId" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="link_pc" jdbcType="VARCHAR" property="linkPc" />
+    <result column="link_h5" jdbcType="VARCHAR" property="linkH5" />
+    <result column="group_type" jdbcType="TINYINT" property="groupType" />
+    <result column="notice_type" jdbcType="TINYINT" property="noticeType" />
+    <result column="notice_title" jdbcType="VARCHAR" property="noticeTitle" />
+    <result column="notice_content" jdbcType="VARCHAR" property="noticeContent" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="limit_days" jdbcType="INTEGER" property="limitDays" />
+    <result column="cashback_rate" jdbcType="DECIMAL" property="cashbackRate" />
+    <result column="register_link" jdbcType="VARCHAR" property="registerLink" />
+    <result column="policy_no" jdbcType="VARCHAR" property="policyNo" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, info_name, info_desc, dept_id, leader_id, begin_time, end_time, state, link_pc, 
+    link_h5, group_type, notice_type, notice_title, notice_content, product_code, limit_days, 
+    cashback_rate, register_link, policy_no, create_by, create_time, update_by, update_time, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_recommend_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_recommend_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yyfax.activity.domain.RecommendInfoDO">
+    insert into tb_recommend_info (id, info_name, info_desc, 
+      dept_id, leader_id, begin_time, 
+      end_time, state, link_pc, 
+      link_h5, group_type, notice_type, 
+      notice_title, notice_content, product_code, 
+      limit_days, cashback_rate, register_link, 
+      policy_no, create_by, create_time, 
+      update_by, update_time, remark
+      )
+    values (#{id,jdbcType=BIGINT}, #{infoName,jdbcType=VARCHAR}, #{infoDesc,jdbcType=VARCHAR}, 
+      #{deptId,jdbcType=VARCHAR}, #{leaderId,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{state,jdbcType=TINYINT}, #{linkPc,jdbcType=VARCHAR}, 
+      #{linkH5,jdbcType=VARCHAR}, #{groupType,jdbcType=TINYINT}, #{noticeType,jdbcType=TINYINT}, 
+      #{noticeTitle,jdbcType=VARCHAR}, #{noticeContent,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR}, 
+      #{limitDays,jdbcType=INTEGER}, #{cashbackRate,jdbcType=DECIMAL}, #{registerLink,jdbcType=VARCHAR}, 
+      #{policyNo,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyfax.activity.domain.RecommendInfoDO">
+    insert into tb_recommend_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="infoName != null">
+        info_name,
+      </if>
+      <if test="infoDesc != null">
+        info_desc,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="leaderId != null">
+        leader_id,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="linkPc != null">
+        link_pc,
+      </if>
+      <if test="linkH5 != null">
+        link_h5,
+      </if>
+      <if test="groupType != null">
+        group_type,
+      </if>
+      <if test="noticeType != null">
+        notice_type,
+      </if>
+      <if test="noticeTitle != null">
+        notice_title,
+      </if>
+      <if test="noticeContent != null">
+        notice_content,
+      </if>
+      <if test="productCode != null">
+        product_code,
+      </if>
+      <if test="limitDays != null">
+        limit_days,
+      </if>
+      <if test="cashbackRate != null">
+        cashback_rate,
+      </if>
+      <if test="registerLink != null">
+        register_link,
+      </if>
+      <if test="policyNo != null">
+        policy_no,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="infoName != null">
+        #{infoName,jdbcType=VARCHAR},
+      </if>
+      <if test="infoDesc != null">
+        #{infoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null">
+        #{leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="linkPc != null">
+        #{linkPc,jdbcType=VARCHAR},
+      </if>
+      <if test="linkH5 != null">
+        #{linkH5,jdbcType=VARCHAR},
+      </if>
+      <if test="groupType != null">
+        #{groupType,jdbcType=TINYINT},
+      </if>
+      <if test="noticeType != null">
+        #{noticeType,jdbcType=TINYINT},
+      </if>
+      <if test="noticeTitle != null">
+        #{noticeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeContent != null">
+        #{noticeContent,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="limitDays != null">
+        #{limitDays,jdbcType=INTEGER},
+      </if>
+      <if test="cashbackRate != null">
+        #{cashbackRate,jdbcType=DECIMAL},
+      </if>
+      <if test="registerLink != null">
+        #{registerLink,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null">
+        #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyfax.activity.domain.RecommendInfoDO">
+    update tb_recommend_info
+    <set>
+      <if test="infoName != null">
+        info_name = #{infoName,jdbcType=VARCHAR},
+      </if>
+      <if test="infoDesc != null">
+        info_desc = #{infoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null">
+        leader_id = #{leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="linkPc != null">
+        link_pc = #{linkPc,jdbcType=VARCHAR},
+      </if>
+      <if test="linkH5 != null">
+        link_h5 = #{linkH5,jdbcType=VARCHAR},
+      </if>
+      <if test="groupType != null">
+        group_type = #{groupType,jdbcType=TINYINT},
+      </if>
+      <if test="noticeType != null">
+        notice_type = #{noticeType,jdbcType=TINYINT},
+      </if>
+      <if test="noticeTitle != null">
+        notice_title = #{noticeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeContent != null">
+        notice_content = #{noticeContent,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        product_code = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="limitDays != null">
+        limit_days = #{limitDays,jdbcType=INTEGER},
+      </if>
+      <if test="cashbackRate != null">
+        cashback_rate = #{cashbackRate,jdbcType=DECIMAL},
+      </if>
+      <if test="registerLink != null">
+        register_link = #{registerLink,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null">
+        policy_no = #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyfax.activity.domain.RecommendInfoDO">
+    update tb_recommend_info
+    set info_name = #{infoName,jdbcType=VARCHAR},
+      info_desc = #{infoDesc,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=VARCHAR},
+      leader_id = #{leaderId,jdbcType=VARCHAR},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=TINYINT},
+      link_pc = #{linkPc,jdbcType=VARCHAR},
+      link_h5 = #{linkH5,jdbcType=VARCHAR},
+      group_type = #{groupType,jdbcType=TINYINT},
+      notice_type = #{noticeType,jdbcType=TINYINT},
+      notice_title = #{noticeTitle,jdbcType=VARCHAR},
+      notice_content = #{noticeContent,jdbcType=VARCHAR},
+      product_code = #{productCode,jdbcType=VARCHAR},
+      limit_days = #{limitDays,jdbcType=INTEGER},
+      cashback_rate = #{cashbackRate,jdbcType=DECIMAL},
+      register_link = #{registerLink,jdbcType=VARCHAR},
+      policy_no = #{policyNo,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <resultMap id="BaseResultMap" type="com.yyfax.activity.domain.RecommendInfoDO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="info_name" jdbcType="VARCHAR" property="infoName" />
+    <result column="info_desc" jdbcType="VARCHAR" property="infoDesc" />
+    <result column="dept_id" jdbcType="VARCHAR" property="deptId" />
+    <result column="leader_id" jdbcType="VARCHAR" property="leaderId" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="link_pc" jdbcType="VARCHAR" property="linkPc" />
+    <result column="link_h5" jdbcType="VARCHAR" property="linkH5" />
+    <result column="group_type" jdbcType="TINYINT" property="groupType" />
+    <result column="notice_type" jdbcType="TINYINT" property="noticeType" />
+    <result column="notice_title" jdbcType="VARCHAR" property="noticeTitle" />
+    <result column="notice_content" jdbcType="VARCHAR" property="noticeContent" />
+    <result column="product_code" jdbcType="VARCHAR" property="productCode" />
+    <result column="limit_days" jdbcType="INTEGER" property="limitDays" />
+    <result column="cashback_rate" jdbcType="DECIMAL" property="cashbackRate" />
+    <result column="register_link" jdbcType="VARCHAR" property="registerLink" />
+    <result column="policy_no" jdbcType="VARCHAR" property="policyNo" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, info_name, info_desc, dept_id, leader_id, begin_time, end_time, state, link_pc, 
+    link_h5, group_type, notice_type, notice_title, notice_content, product_code, limit_days, 
+    cashback_rate, register_link, policy_no, create_by, create_time, update_by, update_time, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tb_recommend_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from tb_recommend_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yyfax.activity.domain.RecommendInfoDO">
+    insert into tb_recommend_info (id, info_name, info_desc, 
+      dept_id, leader_id, begin_time, 
+      end_time, state, link_pc, 
+      link_h5, group_type, notice_type, 
+      notice_title, notice_content, product_code, 
+      limit_days, cashback_rate, register_link, 
+      policy_no, create_by, create_time, 
+      update_by, update_time, remark
+      )
+    values (#{id,jdbcType=BIGINT}, #{infoName,jdbcType=VARCHAR}, #{infoDesc,jdbcType=VARCHAR}, 
+      #{deptId,jdbcType=VARCHAR}, #{leaderId,jdbcType=VARCHAR}, #{beginTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{state,jdbcType=TINYINT}, #{linkPc,jdbcType=VARCHAR}, 
+      #{linkH5,jdbcType=VARCHAR}, #{groupType,jdbcType=TINYINT}, #{noticeType,jdbcType=TINYINT}, 
+      #{noticeTitle,jdbcType=VARCHAR}, #{noticeContent,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR}, 
+      #{limitDays,jdbcType=INTEGER}, #{cashbackRate,jdbcType=DECIMAL}, #{registerLink,jdbcType=VARCHAR}, 
+      #{policyNo,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.yyfax.activity.domain.RecommendInfoDO">
+    insert into tb_recommend_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="infoName != null">
+        info_name,
+      </if>
+      <if test="infoDesc != null">
+        info_desc,
+      </if>
+      <if test="deptId != null">
+        dept_id,
+      </if>
+      <if test="leaderId != null">
+        leader_id,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="linkPc != null">
+        link_pc,
+      </if>
+      <if test="linkH5 != null">
+        link_h5,
+      </if>
+      <if test="groupType != null">
+        group_type,
+      </if>
+      <if test="noticeType != null">
+        notice_type,
+      </if>
+      <if test="noticeTitle != null">
+        notice_title,
+      </if>
+      <if test="noticeContent != null">
+        notice_content,
+      </if>
+      <if test="productCode != null">
+        product_code,
+      </if>
+      <if test="limitDays != null">
+        limit_days,
+      </if>
+      <if test="cashbackRate != null">
+        cashback_rate,
+      </if>
+      <if test="registerLink != null">
+        register_link,
+      </if>
+      <if test="policyNo != null">
+        policy_no,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="infoName != null">
+        #{infoName,jdbcType=VARCHAR},
+      </if>
+      <if test="infoDesc != null">
+        #{infoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null">
+        #{leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="linkPc != null">
+        #{linkPc,jdbcType=VARCHAR},
+      </if>
+      <if test="linkH5 != null">
+        #{linkH5,jdbcType=VARCHAR},
+      </if>
+      <if test="groupType != null">
+        #{groupType,jdbcType=TINYINT},
+      </if>
+      <if test="noticeType != null">
+        #{noticeType,jdbcType=TINYINT},
+      </if>
+      <if test="noticeTitle != null">
+        #{noticeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeContent != null">
+        #{noticeContent,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="limitDays != null">
+        #{limitDays,jdbcType=INTEGER},
+      </if>
+      <if test="cashbackRate != null">
+        #{cashbackRate,jdbcType=DECIMAL},
+      </if>
+      <if test="registerLink != null">
+        #{registerLink,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null">
+        #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yyfax.activity.domain.RecommendInfoDO">
+    update tb_recommend_info
+    <set>
+      <if test="infoName != null">
+        info_name = #{infoName,jdbcType=VARCHAR},
+      </if>
+      <if test="infoDesc != null">
+        info_desc = #{infoDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="deptId != null">
+        dept_id = #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderId != null">
+        leader_id = #{leaderId,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="linkPc != null">
+        link_pc = #{linkPc,jdbcType=VARCHAR},
+      </if>
+      <if test="linkH5 != null">
+        link_h5 = #{linkH5,jdbcType=VARCHAR},
+      </if>
+      <if test="groupType != null">
+        group_type = #{groupType,jdbcType=TINYINT},
+      </if>
+      <if test="noticeType != null">
+        notice_type = #{noticeType,jdbcType=TINYINT},
+      </if>
+      <if test="noticeTitle != null">
+        notice_title = #{noticeTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="noticeContent != null">
+        notice_content = #{noticeContent,jdbcType=VARCHAR},
+      </if>
+      <if test="productCode != null">
+        product_code = #{productCode,jdbcType=VARCHAR},
+      </if>
+      <if test="limitDays != null">
+        limit_days = #{limitDays,jdbcType=INTEGER},
+      </if>
+      <if test="cashbackRate != null">
+        cashback_rate = #{cashbackRate,jdbcType=DECIMAL},
+      </if>
+      <if test="registerLink != null">
+        register_link = #{registerLink,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNo != null">
+        policy_no = #{policyNo,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yyfax.activity.domain.RecommendInfoDO">
+    update tb_recommend_info
+    set info_name = #{infoName,jdbcType=VARCHAR},
+      info_desc = #{infoDesc,jdbcType=VARCHAR},
+      dept_id = #{deptId,jdbcType=VARCHAR},
+      leader_id = #{leaderId,jdbcType=VARCHAR},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=TINYINT},
+      link_pc = #{linkPc,jdbcType=VARCHAR},
+      link_h5 = #{linkH5,jdbcType=VARCHAR},
+      group_type = #{groupType,jdbcType=TINYINT},
+      notice_type = #{noticeType,jdbcType=TINYINT},
+      notice_title = #{noticeTitle,jdbcType=VARCHAR},
+      notice_content = #{noticeContent,jdbcType=VARCHAR},
+      product_code = #{productCode,jdbcType=VARCHAR},
+      limit_days = #{limitDays,jdbcType=INTEGER},
+      cashback_rate = #{cashbackRate,jdbcType=DECIMAL},
+      register_link = #{registerLink,jdbcType=VARCHAR},
+      policy_no = #{policyNo,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
